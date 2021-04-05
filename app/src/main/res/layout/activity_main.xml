@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ececec"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/ic_tic_tac_toe" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="36dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/player_mode"
+        android:textSize="20sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_ai"
+        android:layout_width="170dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="2dp"
+        android:backgroundTint="#4f4f4f"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/ai_mode"
+        app:cornerRadius="36dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_friend"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/friend_mode"
+        android:textSize="15sp"
+        app:cornerRadius="36dp" />
+
+</LinearLayout>

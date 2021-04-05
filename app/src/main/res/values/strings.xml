@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TicTacToe</string>
+    <string name="player_mode">Choose your play mode</string>
+    <string name="ai_mode">With AI</string>
+    <string name="friend_mode">With a friend</string>
+    <string name="pick_your_side">Pick your side</string>
+    <string name="player_1">Player 1</string>
+    <string name="player_2">Player 2</string>
+    <string name="points_player_1">0</string>
+    <string name="name_player_1_hint">Player 1</string>
+    <string name="name_player_2_hint">Player 2</string>
+    <string name="btn_continue">Continue</string>
+    <string name="players_name">Players name</string>
+</resources>

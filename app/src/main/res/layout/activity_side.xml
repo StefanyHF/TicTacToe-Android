@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ececec"
+    android:orientation="vertical"
+    android:padding="40dp"
+    tools:context=".SideActivity">
+
+    <TextView
+        android:id="@+id/text_pick_side"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/pick_your_side"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_icon_x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_icon_x"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-black"
+        android:text="X"
+        android:textColor="#23a8c6"
+        android:textSize="130sp"
+        app:layout_constraintEnd_toStartOf="@+id/text_icon_o"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_pick_side" />
+
+    <TextView
+        android:id="@+id/text_icon_o"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="O"
+        android:textColor="#FAB57F"
+        android:textSize="130sp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_icon_x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_icon_x" />
+
+    <RadioButton
+        android:id="@+id/radio_button_x"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/text_icon_x"
+        app:layout_constraintStart_toStartOf="@+id/text_icon_x"
+        app:layout_constraintTop_toBottomOf="@+id/text_icon_x" />
+
+    <RadioButton
+        android:id="@+id/radio_button_o"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/text_icon_o"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toEndOf="@id/radio_button_x"
+        app:layout_constraintTop_toBottomOf="@+id/text_icon_o" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/continue_button"
+        android:layout_width="160dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/btn_continue"
+        android:textSize="18sp"
+        app:cornerRadius="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/radio_button_o"
+        app:layout_constraintStart_toStartOf="@+id/radio_button_x"
+        app:layout_constraintTop_toBottomOf="@id/radio_button_o" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
