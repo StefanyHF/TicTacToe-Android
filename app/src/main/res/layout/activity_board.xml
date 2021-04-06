@@ -17,6 +17,7 @@
         android:fontFamily="sans-serif-medium"
         android:text=""
         android:textColor="@color/black"
+        android:gravity="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@id/text_points_player_1"
         app:layout_constraintStart_toStartOf="parent"

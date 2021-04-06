@@ -1,13 +1,18 @@
 package com.herfor.tictactoe;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+
+import java.security.AllPermission;
 
 public class BoardActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,8 +43,22 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void startFriendsGame() {
-        setUpButtons();
+
         resetButton();
+        for(int i = 0; i < buttons.length; i++)
+            if(isTie()){
+                Toast.makeText(BoardActivity.this, "Tie! Try again.", Toast.LENGTH_LONG).show();
+            }
+        if(!checkWinner()){
+            setUpButtons();
+        }else{
+            if (currentMark.equals("X")) {
+                Toast.makeText(BoardActivity.this, player1 + " you won!", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(BoardActivity.this, player2 + " you won!", Toast.LENGTH_LONG).show();
+            }
+        }
+
     }
 
     private void setUpButtons() {
@@ -74,7 +93,6 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         return winnerResult;
     }
 
-
     private void switchPlayers() {
         if (currentMark.equals("X")) {
             currentMark = "O";
@@ -89,15 +107,44 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i = 0; i < buttons.length; i++) {
-                    buttons[i].setText("");
-                }
+                new AlertDialog.Builder(BoardActivity.this)
+                        .setTitle("Are you sure?")
+                        .setMessage("Clicking on the Reset button will delete all the current game's plays and the players' scores")
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                for (int i = 0; i < buttons.length; i++) {
+                                    buttons[i].setText("");
+                                }
+                            }
+                        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
+
             }
         });
     }
+
+    private boolean isTie(){
+        int count = 0;
+        for(int i = 0; i < buttons.length; i++){
+            if(!buttons[i].equals("")){
+                count++;
+            }
+        }
+        if(count == buttons.length -1){
+            return true;
+        }
+        return false;
+    }
+
 
     private void startAiGame() {
 
 
     }
 }
+
