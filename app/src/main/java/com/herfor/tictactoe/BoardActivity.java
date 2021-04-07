@@ -45,13 +45,15 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
     private void startFriendsGame() {
 
         resetButton();
-        for(int i = 0; i < buttons.length; i++)
-            if(isTie()){
+        for (int i = 0; i < buttons.length; i++) {
+            if (isTie()) {
                 Toast.makeText(BoardActivity.this, "Tie! Try again.", Toast.LENGTH_LONG).show();
+                reset.performClick();
             }
-        if(!checkWinner()){
+        }
+        if (!checkWinner()) {
             setUpButtons();
-        }else{
+        } else {
             if (currentMark.equals("X")) {
                 Toast.makeText(BoardActivity.this, player1 + " you won!", Toast.LENGTH_LONG).show();
             } else {
@@ -80,14 +82,15 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
 
     private boolean checkWinner() {
         boolean winnerResult = false;
-        if (buttons[0].getText().equals(buttons[1].getText()) && buttons[0].getText().equals(buttons[2].getText()) && !buttons[0].getText().equals("") ||
-                buttons[3].getText().equals(buttons[4].getText()) && buttons[3].getText().equals(buttons[5].getText()) && !buttons[3].getText().equals("") ||
-                buttons[6].getText().equals(buttons[7].getText()) && buttons[6].getText().equals(buttons[8].getText()) && !buttons[6].getText().equals("") ||
-                buttons[0].getText().equals(buttons[3].getText()) && buttons[0].getText().equals(buttons[6].getText()) && !buttons[0].getText().equals("") ||
-                buttons[1].getText().equals(buttons[4].getText()) && buttons[1].getText().equals(buttons[7].getText()) && !buttons[1].getText().equals("") ||
-                buttons[2].getText().equals(buttons[5].getText()) && buttons[2].getText().equals(buttons[8].getText()) && !buttons[2].getText().equals("") ||
-                buttons[0].getText().equals(buttons[4].getText()) && buttons[0].getText().equals(buttons[8].getText()) && !buttons[0].getText().equals("") ||
-                buttons[2].getText().equals(buttons[4].getText()) && buttons[2].getText().equals(buttons[6].getText()) && !buttons[2].getText().equals("")) {
+        int [] winnerPositions =
+        if (buttons[0].getText().equals(buttons[1].getText()) && buttons[0].getText().equals(buttons[2].getText()) && buttons[0].getText().toString().equals("")||
+                buttons[3].getText().toString().equals(buttons[4].getText().toString()) && buttons[3].getText().toString().equals(buttons[5].getText().toString()) && !buttons[3].getText().toString().equals("")||
+                buttons[6].getText().equals(buttons[7].getText()) && buttons[6].getText().equals(buttons[8].getText()) && !buttons[6].getText().toString().equals("")||
+                buttons[0].getText().equals(buttons[3].getText()) && buttons[0].getText().equals(buttons[6].getText()) && !buttons[0].getText().toString().equals("")||
+                buttons[1].getText().equals(buttons[4].getText()) && buttons[1].getText().equals(buttons[7].getText()) && !buttons[1].getText().toString().equals("")||
+                buttons[2].getText().equals(buttons[5].getText()) && buttons[2].getText().equals(buttons[8].getText()) && !buttons[2].getText().toString().equals("")||
+                buttons[0].getText().equals(buttons[4].getText()) && buttons[0].getText().equals(buttons[8].getText()) && !buttons[0].getText().toString().equals("")||
+                buttons[2].getText().equals(buttons[4].getText()) && buttons[2].getText().equals(buttons[6].getText()) && !buttons[2].getText().toString().equals("")) {
             winnerResult = true;
         }
         return winnerResult;
@@ -128,21 +131,23 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    private boolean isTie(){
+    private boolean isTie() {
         int count = 0;
-        for(int i = 0; i < buttons.length; i++){
-            if(!buttons[i].equals("")){
+        for (int i = 0; i < buttons.length; i++) {
+            if (buttons[i] != null) {
                 count++;
             }
         }
-        if(count == buttons.length -1){
+        if (count == buttons.length - 1) {
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
 
     private void startAiGame() {
+        setUpButtons();
 
 
     }
