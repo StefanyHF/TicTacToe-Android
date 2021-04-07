@@ -43,7 +43,7 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void startFriendsGame() {
-
+        setUpButtons();
         resetButton();
         for (int i = 0; i < buttons.length; i++) {
             if (isTie()) {
@@ -51,15 +51,7 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
                 reset.performClick();
             }
         }
-        if (!checkWinner()) {
-            setUpButtons();
-        } else {
-            if (currentMark.equals("X")) {
-                Toast.makeText(BoardActivity.this, player1 + " you won!", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(BoardActivity.this, player2 + " you won!", Toast.LENGTH_LONG).show();
-            }
-        }
+
 
     }
 
@@ -69,7 +61,6 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
             int resourceID = getResources().getIdentifier(buttonID, "id", getPackageName());
             buttons[i] = findViewById(resourceID);
             buttons[i].setOnClickListener(this);
-
         }
     }
 
@@ -77,19 +68,28 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         if (((MaterialButton) v).getText().toString().equals("")) {
             ((MaterialButton) v).setText(currentMark);
             switchPlayers();
+            if (isTie()) {
+                Toast.makeText(this, "Tie!", Toast.LENGTH_LONG).show();
+            }
+            if (checkWinner()) {
+                if (currentMark.equals("X")) {
+                    Toast.makeText(BoardActivity.this, player1.getText() + " you won!", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(BoardActivity.this, player2.getText() + " you won!", Toast.LENGTH_LONG).show();
+                }
+            }
         }
     }
 
     private boolean checkWinner() {
         boolean winnerResult = false;
-        int [] winnerPositions =
-        if (buttons[0].getText().equals(buttons[1].getText()) && buttons[0].getText().equals(buttons[2].getText()) && buttons[0].getText().toString().equals("")||
-                buttons[3].getText().toString().equals(buttons[4].getText().toString()) && buttons[3].getText().toString().equals(buttons[5].getText().toString()) && !buttons[3].getText().toString().equals("")||
-                buttons[6].getText().equals(buttons[7].getText()) && buttons[6].getText().equals(buttons[8].getText()) && !buttons[6].getText().toString().equals("")||
-                buttons[0].getText().equals(buttons[3].getText()) && buttons[0].getText().equals(buttons[6].getText()) && !buttons[0].getText().toString().equals("")||
-                buttons[1].getText().equals(buttons[4].getText()) && buttons[1].getText().equals(buttons[7].getText()) && !buttons[1].getText().toString().equals("")||
-                buttons[2].getText().equals(buttons[5].getText()) && buttons[2].getText().equals(buttons[8].getText()) && !buttons[2].getText().toString().equals("")||
-                buttons[0].getText().equals(buttons[4].getText()) && buttons[0].getText().equals(buttons[8].getText()) && !buttons[0].getText().toString().equals("")||
+        if (buttons[0].getText().equals(buttons[1].getText()) && buttons[0].getText().equals(buttons[2].getText()) && buttons[0].getText().toString().equals("") ||
+                buttons[3].getText().equals(buttons[4].getText()) && buttons[3].getText().equals(buttons[5].getText()) && !buttons[3].getText().toString().equals("") ||
+                buttons[6].getText().equals(buttons[7].getText()) && buttons[6].getText().equals(buttons[8].getText()) && !buttons[6].getText().toString().equals("") ||
+                buttons[0].getText().equals(buttons[3].getText()) && buttons[0].getText().equals(buttons[6].getText()) && !buttons[0].getText().toString().equals("") ||
+                buttons[1].getText().equals(buttons[4].getText()) && buttons[1].getText().equals(buttons[7].getText()) && !buttons[1].getText().toString().equals("") ||
+                buttons[2].getText().equals(buttons[5].getText()) && buttons[2].getText().equals(buttons[8].getText()) && !buttons[2].getText().toString().equals("") ||
+                buttons[0].getText().equals(buttons[4].getText()) && buttons[0].getText().equals(buttons[8].getText()) && !buttons[0].getText().toString().equals("") ||
                 buttons[2].getText().equals(buttons[4].getText()) && buttons[2].getText().equals(buttons[6].getText()) && !buttons[2].getText().toString().equals("")) {
             winnerResult = true;
         }
@@ -134,11 +134,11 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
     private boolean isTie() {
         int count = 0;
         for (int i = 0; i < buttons.length; i++) {
-            if (buttons[i] != null) {
+            if (!buttons[i].getText().equals("")) {
                 count++;
             }
         }
-        if (count == buttons.length - 1) {
+        if (count == buttons.length) {
             return true;
         } else {
             return false;
